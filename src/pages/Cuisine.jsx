@@ -24,7 +24,7 @@ function Cuisine() {
             return(
                 <Card key={item.id}>
                     <img src={item.image} alt="" />
-                    <h6>{item.title}</h6>
+                    <h5>{item.title}</h5>
                 </Card>
             )
         })}
@@ -35,7 +35,7 @@ function Cuisine() {
 const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    grid-gap: 3rem;
+    grid-gap: 1.5rem;
 
 `
 
