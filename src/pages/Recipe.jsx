@@ -31,9 +31,20 @@ function Recipe() {
             <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab('instructions')}>Instructions</Button>
             <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>Ingredients</Button>
             
-            <div className='info-section'>
-                <h4 dangerouslySetInnerHTML={{__html: details.summary}}></h4>
-            </div>
+            {activeTab === 'instructions' && (
+                <div className='info-section'>
+                    <h5 dangerouslySetInnerHTML={{__html: details.summary}}></h5>
+                    <h5 dangerouslySetInnerHTML={{__html: details.instructions}}></h5>
+                </div>
+            )}
+
+            {activeTab === 'ingredients' && (
+                <ul>
+                    {details.extendedIngredients.map((ingredient) => 
+                        <h5><li key={ingredient.id}>{ingredient.original}</li></h5>
+                    )}
+                </ul>
+            )}
         </Info>
     </DetailWrapper>
   )
@@ -50,21 +61,21 @@ const DetailWrapper = styled.div`
     }
 
     .title-img {
-        width: 50%;
+        width: 45%;
     }
 
     img {
-        /* width: 100%; */
+        width: 85%;
     }
 
-    h3 {
+    h3, h5 {
         margin-bottom: 1rem;
     }
 
 
 `
 const Info = styled.div`
-    /* margin-left: 2.5rem; */
+    width: 50%;
 `
 
 const Button = styled.button`
